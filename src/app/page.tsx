@@ -1,32 +1,13 @@
 import Filter from "@/components/Filter/Filter";
 import { getVehicleTypes } from "@/utils/api";
-import { datesArr } from "@/utils/datesArr";
-import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const typesArr = await getVehicleTypes();
 
   return (
-    <main className="">
-      <Filter />
-      {/* <select>
-        {data &&
-          data.map((item: string) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-      </select>
-      <select>
-        {datesArr &&
-          datesArr.map((item: number) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-      </select>
-      <Link href={"/result/411/2015"}>
-        <button>Next</button>
-      </Link> */}
+    <main>
+      <h1 className="text-xl">Choose your filters for the car</h1>
+      <Filter typesArr={typesArr} />
     </main>
   );
 }
