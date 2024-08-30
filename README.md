@@ -4,7 +4,15 @@
 Run <code>npm i</code> to install all neccessaery packages. 
 After that run <code>npm run dev</code> to run the app.
 
-## What sctructure is used for?
+## Features
+<ul>
+  <li>Use filter for finding a car</li>
+  <li>Next button is active only when all filters are applied</li>
+  <li>The result page shows you one or more cars</li>
+  <li>The car item shows you model and maker</li>
+</ul>
+
+## What sctructure is used?
 The project is not that big to call it the whole structure, but I wanted to create something similar to Clear Architecture.
 <ul>
   <li>Folder <code>components</code> has components that can reused in the app</li>
