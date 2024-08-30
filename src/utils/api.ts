@@ -6,10 +6,15 @@ export interface IVehicle {
 }
 
 export const getVehicleTypes = async () => {
-  const response = await fetch(
-    "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json"
-  );
-  const json = await response.json();
+  try {
+    const response = await fetch(
+      "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json"
+    );
+    const json = await response.json();
 
-  return json.Results;
+    return json.Results;
+  } catch (error) {
+    console.error(error);
+    return { error: "We couldn't load types!" };
+  }
 };
