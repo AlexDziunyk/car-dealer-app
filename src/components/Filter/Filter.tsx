@@ -10,7 +10,6 @@ interface IFilterProps {
 }
 
 const Filter = ({ typesArr }: IFilterProps) => {
-
   const [year, setYear] = useState<number | null>(null);
   const [typeObj, setTypeObj] = useState<IVehicle | null>();
 
@@ -20,24 +19,31 @@ const Filter = ({ typesArr }: IFilterProps) => {
   const handleYearChange = (item: number) => {
     setYear(item);
     setIsYearOpened(false);
-  }
+  };
 
   const handleTypeChange = (item: IVehicle) => {
     setTypeObj(item);
     setIsTypeOpened(false);
-  }
+  };
 
   return (
     <div className="flex flex-row gap-4 items-center mt-4 justify-center">
       <div className="relative">
-        <div onClick={() => setIsYearOpened(prev => !prev)} className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer">
+        <div
+          onClick={() => setIsYearOpened((prev) => !prev)}
+          className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer"
+        >
           {year ?? "Choose year"}
         </div>
         <div className="absolute overflow-auto h-40 w-48">
           {datesArr &&
             isYearOpened &&
             datesArr.map((item: number) => (
-              <div onClick={() => handleYearChange(item)} className="cursor-pointer p-1 bg-[#fff] hover:bg-[#F5F4F5]" key={item}>
+              <div
+                onClick={() => handleYearChange(item)}
+                className="cursor-pointer p-1 bg-[#fff] hover:bg-[#F5F4F5]"
+                key={item}
+              >
                 {item}
               </div>
             ))}
@@ -45,14 +51,21 @@ const Filter = ({ typesArr }: IFilterProps) => {
       </div>
 
       <div className="relative">
-        <div onClick={() => setIsTypeOpened(prev => !prev)} className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer">
+        <div
+          onClick={() => setIsTypeOpened((prev) => !prev)}
+          className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer"
+        >
           {typeObj?.MakeName ?? "Choose type"}
         </div>
         <div className="absolute overflow-auto h-40 w-48">
           {typesArr &&
             isTypeOpened &&
             typesArr.map((item: IVehicle) => (
-              <div key={item.MakeId} onClick={() => handleTypeChange(item)} className="cursor-pointer p-1 bg-[#fff] hover:bg-[#F5F4F5]">
+              <div
+                key={item.MakeId}
+                onClick={() => handleTypeChange(item)}
+                className="cursor-pointer p-1 bg-[#fff] hover:bg-[#F5F4F5]"
+              >
                 {item.MakeName}
               </div>
             ))}
@@ -60,9 +73,13 @@ const Filter = ({ typesArr }: IFilterProps) => {
       </div>
 
       <Link href={`/result/${typeObj?.MakeId}/${year}`}>
-        <button className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer disabled:bg-[#F5F4F5]" disabled={!typeObj || !year}>Next</button>
+        <button
+          className="w-48 d-flex bg-[#FFF] p-4 rounded-md border border-black cursor-pointer disabled:bg-[#F5F4F5]"
+          disabled={!typeObj || !year}
+        >
+          Next
+        </button>
       </Link>
-
     </div>
   );
 };
