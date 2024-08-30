@@ -56,10 +56,11 @@ const Result = async ({
     <div>
       <h2 className="text-lg">Year: {params.year}</h2>
       <div className="flex flex-row gap-4 justify-center aling-center mt-4">
-        {cars && cars.map((item: ICar) => (
-          <CarItem key={item.Make_ID} car={item} />
-        ))}
-        {!cars && <p>Oh, I'm sorry, but we couldn't find such car. Try again.</p>}
+        {cars &&
+          cars.map((item: ICar) => <CarItem key={item.Make_ID} car={item} />)}
+        {cars === null && (
+          <p>Oh, I am sorry, but we cannot find such car. Try again.</p>
+        )}
       </div>
     </div>
   );
